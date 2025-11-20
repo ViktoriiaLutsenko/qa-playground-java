@@ -2,4 +2,16 @@
 
 # topic
 
-1.  para for step
+- **option1**
+
+- *option2*
+
+- <u>option3</u>
+
+- ~~option4~~
+
+- *option5*
+
+- option<sup>6</sup>
+
+- option<sub>7</sub>
