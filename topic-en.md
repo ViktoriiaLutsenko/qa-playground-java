@@ -4,7 +4,7 @@
 
 **Bridgehead for topic**
 
- 
+vvv 
 
 ``` plaintext
 code block
@@ -110,5 +110,5 @@ new section text
 
 Next line is cross-ref link
 
-[new publication is created](#) <span id="N691f7c661f821"
+[new publication is created](#) <span id="N691f7cc77d01d"
 class="linktextprovider">new publication is created</span>
