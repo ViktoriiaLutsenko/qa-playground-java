@@ -4,7 +4,7 @@
 
 **Bridgehead for topic**
 
-vvv 
+ 
 
 ``` plaintext
 code block
@@ -98,7 +98,8 @@ src="image/img-78160ef731c4c1af849422e40681c0a5.webp" /></p></td>
 <p><strong>4. thumbnail</strong> </p>
 <p><img src="image/img-9806fc2e985b2ac277fc0b2a7780bdde.webp" /></p>
 <p>5<strong>. image</strong></p>
-<p><img src="image/img-75099ba4139e76188605499356845e74.png" /></p>
+<p><img src="image/img-75099ba4139e76188605499356845e74.png"
+alt="caption for image" /></p>
 <figcaption>title for figure</figcaption>
 </figure>
 
@@ -110,5 +111,5 @@ new section text
 
 Next line is cross-ref link
 
-[new publication is created](#) <span id="N691f7cc77d01d"
+[new publication is created](#) <span id="N691f7f6b8ca69"
 class="linktextprovider">new publication is created</span>
