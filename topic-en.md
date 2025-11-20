@@ -2,16 +2,16 @@
 
 # topic
 
-- **option1**
+1.  **option1**
 
-- *option2*
+2.  *option2*
 
-- <u>option3</u>
+3.  <u>option3</u>
 
-- ~~option4~~
+4.  ~~option4~~
 
-- *option5*
+5.  *option5*
 
-- option<sup>6</sup>
+6.  option<sup>6</sup>
 
-- option<sub>7</sub>
+7.  option<sub>7</sub>
