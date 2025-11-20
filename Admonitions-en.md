@@ -5,25 +5,25 @@
 > [!WARNING]
 > This is a *danger*.
 
+> [!WARNING]
+> This is a *warning*. Warnings alert users about potential risks.
+
+> [!NOTE]
+> This is a *note*. Notes are used for additional information.
+
+> [!NOTE]
+> This is a *notice*.
+
 DocBook includes several types of admonitions to highlight important
 content.
 
 > [!IMPORTANT]
-> This is an *important* notice. Pay special attention to this.
-
-> [!NOTE]
-> This is a *note*. Notes are used for additional information.
+> This is an *important* notice. **Pay special attention to this.**
 
 **Understanding Admonitions**
 
 > [!TIP]
 > This is a *tip*. Tips provide helpful suggestions.
 
-> [!WARNING]
-> This is a *warning*. Warnings alert users about potential risks.
-
 > [!CAUTION]
 > This is a *caution*. Be careful when following these instructions.
-
-> [!NOTE]
-> This is a *notice*.
