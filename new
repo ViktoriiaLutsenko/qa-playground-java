@@ -1,0 +1,17 @@
+# GFM Compatibility Test
+
+**1. Strikethrough**
+~~This text should have a line through it.~~
+
+**2. Task List**
+- [x] This is a completed task (should have a checkmark)
+- [ ] This is an incomplete task (should be an empty box)
+
+**3. Table**
+| Feature | Status |
+| :--- | :--- |
+| Tables | Working |
+| Alignment | Left |
+
+**4. Auto-link**
+https://www.github.com (This should automatically become a clickable link)
