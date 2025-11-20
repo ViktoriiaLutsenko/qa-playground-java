@@ -2,10 +2,4 @@
 
 # topic
 
-*Overlined text* 
-
-<u>Underlined text</u> 
-
-Gulliable text
-
-tag text
+1.  para for step
