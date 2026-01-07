@@ -12,4 +12,19 @@
 
 > **Danger**
 >
-> some danger
+> some danger without title
+
+> **Notice**
+>
+> notice without title
+
+> **title for notice**
+>
+> notice with title
+
+> [!NOTE]
+> note without title
+
+> **title for note**
+>
+> note with title
