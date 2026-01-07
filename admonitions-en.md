@@ -9,3 +9,7 @@
 > **NEW TITLE FOR WARNING**
 >
 > djfgdsfhjsd
+
+> **Danger**
+>
+> some danger
