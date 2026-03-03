@@ -65,26 +65,45 @@ Use repo-root commands as the default style:
 
 Common scenarios — use filename regex with `--retries=1` as the standard form:
 
+All smoke:
+
 ```sh
-# All smoke
-pnpm --filter "e2e" test -- ".*\\.smoke\\.spec\\.ts$" --retries=1
+pnpm --filter "e2e" test -- ".*\.smoke\.spec\.ts$" --retries=1
+```
 
-# All regression
-pnpm --filter "e2e" test -- ".*\\.regression\\.spec\\.ts$" --retries=1
+All regression:
 
-# Folder-specific smoke (example: new-main-editor)
-pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\\.smoke\\.spec\\.ts$" --retries=1
+```sh
+pnpm --filter "e2e" test -- ".*\.regression\.spec\.ts$" --retries=1
+```
 
-# Folder-specific regression (example: new-main-editor)
-pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\\.regression\\.spec\\.ts$" --retries=1
+Folder-specific smoke (example: `new-main-editor`):
 
-# Specific test file
+```sh
+pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\.smoke\.spec\.ts$" --retries=1
+```
+
+Folder-specific regression (example: `new-main-editor`):
+
+```sh
+pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\.regression\.spec\.ts$" --retries=1
+```
+
+Specific test file:
+
+```sh
 pnpm --filter "e2e" test -- "src/tests/new-main-editor/my-test.smoke.spec.ts" --retries=1
+```
 
-# Several specific test files
+Several specific test files:
+
+```sh
 pnpm --filter "e2e" test -- "src/tests/new-main-editor/first.smoke.spec.ts" "src/tests/new-main-editor/second.smoke.spec.ts" --retries=1
+```
 
-# Rerun only previously failed tests
+Rerun only previously failed tests:
+
+```sh
 pnpm --filter "e2e" test -- --last-failed --retries=1
 ```
 
@@ -94,26 +113,45 @@ Parallelism defaults to `workers: 1` in Playwright config for local stability. I
 
 If your shell is already in `node-packages/e2e`, use:
 
+All smoke:
+
 ```sh
-# All smoke
 pnpm run test -- ".*\.smoke\.spec\.ts$" --retries=1
+```
 
-# All regression
+All regression:
+
+```sh
 pnpm run test -- ".*\.regression\.spec\.ts$" --retries=1
+```
 
-# Folder-specific smoke (example: new-main-editor)
+Folder-specific smoke (example: `new-main-editor`):
+
+```sh
 pnpm run test -- "src/tests/new-main-editor/.*\.smoke\.spec\.ts$" --retries=1
+```
 
-# Folder-specific regression (example: new-main-editor)
+Folder-specific regression (example: `new-main-editor`):
+
+```sh
 pnpm run test -- "src/tests/new-main-editor/.*\.regression\.spec\.ts$" --retries=1
+```
 
-# Specific test file
+Specific test file:
+
+```sh
 pnpm run test -- "src/tests/new-main-editor/my-test.smoke.spec.ts" --retries=1
+```
 
-# Several specific test files
+Several specific test files:
+
+```sh
 pnpm run test -- "src/tests/new-main-editor/first.smoke.spec.ts" "src/tests/new-main-editor/second.smoke.spec.ts" --retries=1
+```
 
-# Rerun only previously failed tests
+Rerun only previously failed tests:
+
+```sh
 pnpm run test -- --last-failed --retries=1
 ```
 
