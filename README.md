@@ -4,6 +4,8 @@ End-to-end tests built with [Playwright](https://playwright.dev/docs/writing-tes
 
 - [E2E tests](#e2e-tests)
   - [Prerequisites](#prerequisites)
+    - [Host file entry](#host-file-entry)
+    - [E2E database](#e2e-database)
   - [Use](#use)
     - [Install](#install)
     - [Environment variables](#environment-variables)
@@ -30,9 +32,28 @@ End-to-end tests built with [Playwright](https://playwright.dev/docs/writing-tes
 
 ## Prerequisites
 
-- Node.js 20, 22, or 24
 - `pnpm` installed globally
-- A running local Paligo instance (or access to the target environment)
+- A running local Paligo environment with the following setup:
+
+### Host file entry
+
+Tests run against `https://e2e.paligo.test/`. If your browser or terminal cannot resolve this URL, add it to your `/etc/hosts` file:
+
+```
+127.0.0.1 e2e.paligo.test
+```
+
+### E2E database
+
+Tests use a **dedicated e2e database**, not your regular local database. Use these commands to manage it:
+
+| Command | Description |
+| --- | --- |
+| `e2edb:update` | Download the latest `schema.sql` and recreate your local E2E database |
+| `e2edb:reset` | Reset your local E2E database and clear locally persisted E2E data (cookies, cached fixture metadata) |
+| `e2e:reset` | Clear only locally persisted E2E data (cookies, cached fixture metadata) without touching the database |
+
+Run `e2edb:update` when setting up for the first time or after schema changes. Run `e2edb:reset` or `e2e:reset` when tests fail due to stale local state.
 
 ## Use
 
