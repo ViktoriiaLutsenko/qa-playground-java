@@ -2,6 +2,25 @@
 
 End-to-end tests use [Playwright](https://playwright.dev/docs/writing-tests).
 
+- [E2E tests](#e2e-tests)
+  - [Use](#use)
+    - [Install](#install)
+    - [Run from console (repo root)](#run-from-console-repo-root)
+    - [Equivalent from e2e folder](#equivalent-from-e2e-folder)
+    - [VS Code Playwright plugin](#vs-code-playwright-plugin)
+    - [Selection rules](#selection-rules)
+  - [Develop](#develop)
+    - [Structure](#structure)
+    - [Auth](#auth)
+    - [Selecting items](#selecting-items)
+  - [Failing tests](#failing-tests)
+    - [Test report](#test-report)
+    - [Trace file](#trace-file)
+    - [Common errors](#common-errors)
+      - [Expectations failing shortly after navigation](#expectations-failing-shortly-after-navigation)
+      - [Timeouts](#timeouts)
+      - [Strict mode violation](#strict-mode-violation)
+
 ## Use
 
 ### Install
@@ -19,12 +38,30 @@ Use repo-root commands as the default style:
 | Command | Description |
 | --- | --- |
 | `pnpm --filter "e2e" test` | Run all E2E tests |
-| `pnpm --filter "e2e" test -- --help` | Show all Playwright CLI options |
+| `pnpm --filter "e2e" test --help` | Show all Playwright CLI options |
 | `pnpm --filter "e2e" dev` | Open Playwright UI mode |
-| `pnpm --filter "e2e" debug -- src/tests/new-main-editor` | Debug matching tests in headed mode |
+| `pnpm --filter "e2e" debug` | Run in Playwright debug mode |
 | `pnpm --filter "e2e" record` | Open codegen recorder |
 
-Four common scenarios (filename-regex first, then `--grep` alternative):
+Quick copy/paste:
+
+Use these as the preferred selectors (filename regex). `--grep` alternatives are listed in the scenarios below.
+
+```sh
+# Folder-specific smoke (new-main-editor)
+pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\\.smoke\\.spec\\.ts$"
+
+# All smoke
+pnpm --filter "e2e" test -- ".*\\.smoke\\.spec\\.ts$"
+
+# All regression
+pnpm --filter "e2e" test -- ".*\\.regression\\.spec\\.ts$"
+
+# Folder-specific regression (new-main-editor)
+pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\\.regression\\.spec\\.ts$"
+```
+
+Four common scenarios (filename regex first, then a `--grep` alternative):
 
 1. Folder-specific smoke (example: `new-main-editor`)
 
@@ -54,32 +91,43 @@ pnpm --filter "e2e" test -- "src/tests/new-main-editor/.*\\.regression\\.spec\\.
 pnpm --filter "e2e" test -- "src/tests/new-main-editor" --grep "regression"
 ```
 
-Parallelism defaults to `workers: 1` in Playwright config for local stability. Increase workers when needed, for example `--workers=2` or `--workers=50%`.
+Parallelism defaults to `workers: 1` in Playwright config for local stability. Increase workers when needed (for example, `--workers=2` or `--workers=50%`).
 
 ### Equivalent from e2e folder
 
 If your shell is already in `node-packages/e2e`, use:
 
-- Folder-specific smoke: `pnpm run test -- "src/tests/new-main-editor/.*\\.smoke\\.spec\\.ts$"`
-- All smoke: `pnpm run test -- ".*\\.smoke\\.spec\\.ts$"`
-- All regression: `pnpm run test -- ".*\\.regression\\.spec\\.ts$"`
-- Folder-specific regression: `pnpm run test -- "src/tests/new-main-editor/.*\\.regression\\.spec\\.ts$"`
+- Folder-specific smoke
+  - Regex: `pnpm run test -- "src/tests/new-main-editor/.*\\.smoke\\.spec\\.ts$"`
+  - Grep: `pnpm run test -- "src/tests/new-main-editor" --grep "smoke"`
+- All smoke
+  - Regex: `pnpm run test -- ".*\\.smoke\\.spec\\.ts$"`
+  - Grep: `pnpm run test -- --grep "smoke"`
+- All regression
+  - Regex: `pnpm run test -- ".*\\.regression\\.spec\\.ts$"`
+  - Grep: `pnpm run test -- --grep "regression"`
+- Folder-specific regression
+  - Regex: `pnpm run test -- "src/tests/new-main-editor/.*\\.regression\\.spec\\.ts$"`
+  - Grep: `pnpm run test -- "src/tests/new-main-editor" --grep "regression"`
 
 ### VS Code Playwright plugin
 
-This repo recommends `ms-playwright.playwright` (see `.vscode/extensions.json`).
+This repo recommends `ms-playwright.playwright` (see `node-packages/e2e/.vscode/extensions.json`).
 
 Using the Testing panel:
 
 1. Folder-specific smoke
    - Expand `e2e > src > tests > new-main-editor`
    - Run the `*.smoke.spec.ts` tests from that folder (Run or Debug)
+
 2. All smoke
    - Use Testing panel filter: `smoke.spec.ts`
    - Run all filtered tests
+
 3. All regression
    - Use Testing panel filter: `regression.spec.ts`
    - Run all filtered tests
+
 4. Folder-specific regression
    - Expand target folder (for example `new-main-editor`)
    - Run the `*.regression.spec.ts` tests (Run or Debug)
